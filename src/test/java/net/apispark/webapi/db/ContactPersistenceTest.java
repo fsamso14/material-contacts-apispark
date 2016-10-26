@@ -5,22 +5,20 @@ import net.apispark.webapi.representation.Contact;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 
 public class ContactPersistenceTest {
 	 @Test
 	    public void test1() throws Exception {
 		 Contact c = new Contact();
 		 Contact contactSaved = ContactPersistence.INSTANCE.addContact(c);
-	        Assert.assertNotEquals(null, contactSaved.getId());
+	        Assert.assertThat(contactSaved.getId(), is(notNullValue()));
 	    }
 	 @Test
 	 public void test2() throws Exception {
 		 Contact c = new Contact();
-		 ContactPersistence.INSTANCE.addContact(c);
-		 Contact d = ContactPersistence.INSTANCE.getContact(c.getId());
-		 ContactPersistence.INSTANCE.addContact(d);
-	        Assert.assertEquals(d.getId(), c.getId());
+		 Contact c1 =ContactPersistence.INSTANCE.addContact(c);
+		 Contact d1 =ContactPersistence.INSTANCE.getContact(c1.getId());
+	        Assert.assertThat(d1.getId(), is(c1.getId()));
 	    }
 }
