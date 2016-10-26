@@ -19,6 +19,14 @@ public class ContactPersistenceTest {
 		 Contact c = new Contact();
 		 Contact c1 =ContactPersistence.INSTANCE.addContact(c);
 		 Contact d1 =ContactPersistence.INSTANCE.getContact(c1.getId());
-	        Assert.assertThat(d1.getId(), is(c1.getId()));
+	     Assert.assertThat(d1.getId(), is(c1.getId()));
+	    }
+	 
+	 @Test
+	 public void test3() throws Exception {
+		 Contact c = new Contact();
+		 Contact c1 =ContactPersistence.INSTANCE.addContact(c);
+		 Contact d1 =ContactPersistence.INSTANCE.getContact(c1.getId());
+	     Assert.assertThat(d1.getId(), is(c1.getId()));
 	    }
 }
